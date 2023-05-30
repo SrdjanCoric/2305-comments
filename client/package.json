@@ -17,6 +17,12 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "-": "^0.0.1",
+    "D": "^1.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
