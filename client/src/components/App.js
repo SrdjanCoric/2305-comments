@@ -1,25 +1,21 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import AddCommentForm from "./AddCommentForm";
 import Comments from "./Comments";
+import { createComment, getComments, getReplies } from "../services/comment";
 
 const App = () => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const fetchComments = async () => {
-      const response = await axios.get("/api/comments");
-      const data = response.data;
+      const data = await getComments();
       setComments(data);
     };
     fetchComments();
   }, []);
 
   const handleMoreReplies = async (commentId) => {
-    const response = await axios.get(
-      `/api/comment_replies?comment_id=${commentId}`
-    );
-    const data = response.data; // the rest of the replies
+    const data = await getReplies(commentId);
     setComments((prevState) =>
       prevState.map((comment) => {
         if (comment.id === commentId) {
@@ -33,8 +29,7 @@ const App = () => {
 
   const handleSubmit = async (newComment, callback) => {
     try {
-      const response = await axios.post("/api/comments", { ...newComment });
-      const data = response.data;
+      const data = await createComment(newComment);
       setComments((prevState) => prevState.concat(data));
       if (callback) {
         callback();
