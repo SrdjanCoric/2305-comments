@@ -41,6 +41,7 @@ const App = () => {
 
   return (
     <div>
+      {comments.length > 0 ? <h1>Comments App</h1> : null}
       <Comments comments={comments} onMoreReplies={handleMoreReplies} />
       <AddCommentForm onSubmit={handleSubmit} />
     </div>

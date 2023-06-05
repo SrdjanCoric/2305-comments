@@ -2,7 +2,7 @@ import Comment from "./Comment";
 
 const CommentThread = ({ comment, onMoreReplies }) => {
   return (
-    <div className="parent-comment">
+    <div className="parent-comment" data-testid="comment">
       <Comment {...comment} />
       <div className="replies">
         {comment.replies.map((reply) => {
